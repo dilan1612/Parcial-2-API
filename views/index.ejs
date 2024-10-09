@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./templates/header.ejs') %>
+<body>
+    <h1>Lista de personajes de Star Wars</h1>
+
+    <!-- Formulario para buscar por ObjectId -->
+    <form action="/character" method="get">
+        <input type="text" name="id" placeholder="Ingresa ObjectId" required>
+        <button type="submit">Buscar Personaje</button>
+    </form>
+    
+
+    <table class="characters-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Color de Cabello</th>
+                <th>Color de Piel</th>
+                <th>Color de Ojos</th>
+                <th>Año de Nacimiento</th>
+                <th>Género</th>
+                <th>Mundo Natal</th>
+                <th>Especie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (characters.length > 0) { %>
+                <% characters.forEach(character => { %>
+                    <tr>
+                        <td><%= character.name %></td>
+                        <td><%= character.height ? character.height + ' cm' : 'Desconocida' %></td>
+                        <td><%= character.mass ? character.mass + ' kg' : 'Desconocido' %></td>
+                        <td><%= character.hair_color %></td>
+                        <td><%= character.skin_color %></td>
+                        <td><%= character.eye_color %></td>
+                        <td><%= character.birth_year %></td>
+                        <td><%= character.gender %></td>
+                        <td><%= character.homeworld %></td>
+                        <td><%= character.species %></td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="10">No hay personajes disponibles</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <%- include('./templates/footer.ejs') %>
+</body>
+</html>

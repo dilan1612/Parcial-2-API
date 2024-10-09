@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= character.name %> - Detalles</title>
+    <h1>INFORMACION</h1>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Detalles del Personaje</h1>
+    <div class="character-details">
+        <strong>Nombre:</strong> <%= character.name %> <br>
+        <strong>Altura:</strong> <%= character.height ? character.height + ' cm' : 'Desconocida' %> <br>
+        <strong>Peso:</strong> <%= character.mass ? character.mass + ' kg' : 'Desconocido' %> <br>
+        <strong>Color de Cabello:</strong> <%= character.hair_color %> <br>
+        <strong>Color de Piel:</strong> <%= character.skin_color %> <br>
+        <strong>Color de Ojos:</strong> <%= character.eye_color %> <br>
+        <strong>Año de Nacimiento:</strong> <%= character.birth_year %> <br>
+        <strong>Género:</strong> <%= character.gender %> <br>
+        <strong>Mundo Natal:</strong> <%= character.homeworld %> <br>
+        <strong>Especie:</strong> <%= character.species %> <br>
+    </div>
+    <a href="/">Regresar a la lista de personajes</a>
+</body>
+</html>
