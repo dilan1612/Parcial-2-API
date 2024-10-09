@@ -102,6 +102,27 @@ function getCharacterById(objectId) {
   });
 }
 
+function getCharacterByName(name) {
+  return new Promise((resolve, reject) => {
+      fetch(`https://starwars-n5ec-developuptcs-projects.vercel.app/name/${name}`, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      })
+          .then(result => result.json())
+          .then(result => {
+              // Verificamos si se encontraron personajes
+              if (result.length > 0) {
+                  resolve(result); // Resolvemos con los personajes encontrados
+              } else {
+                  resolve([]); // Si no hay personajes, resolvemos con un array vacío
+              }
+          })
+          .catch(err => reject(err));
+  });
+}
+
 function displayCharacterData(character) {
   const tableBody = document.getElementById('characterData');
   tableBody.innerHTML = '';
